@@ -1,0 +1,89 @@
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+ 
+/* Base style for number animation elements */
+/* Initializes --num to 0 and resets the CSS counter 'num' to that value */
+.number-animation {
+  --num: 0;
+  counter-reset: num var(--num);
+}
+ 
+/* Use the ::after pseudo-element to display the current value of the counter */
+.number-animation::after {
+  content: counter(num) "+";
+}
+ 
+/* Keyframe animations to animate --num from 0 up to the target number */
+/* Example animation from 0 to 50 */
+@keyframes counter--30 {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 30;
+  }
+}
+ 
+/* You can add more animations for different target numbers as needed */
+ 
+/* Animation classes that apply the corresponding keyframe animations */
+.animate--30 {
+  animation: counter--30 5s ease forwards;
+
+}
+ 
+@keyframes counter--20 {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 20;
+  }
+}
+ 
+/* You can add more animations for different target numbers as needed */
+ 
+/* Animation classes that apply the corresponding keyframe animations */
+ 
+.animate--20 {
+  animation: counter--20 5s ease forwards;
+}
+ 
+ 
+@keyframes counter--400 {
+  from {
+    --num: 250;
+  }
+  to {
+    --num: 400;
+  }
+}
+ 
+/* You can add more animations for different target numbers as needed */
+ 
+/* Animation classes that apply the corresponding keyframe animations */
+.animate--400 {
+  animation: counter--400 15s ease forwards;
+}
+ 
+ 
+@media (max-width: 991px) {
+  .number-animation {
+    animation: none !important;
+  }
+ 
+  .animate--30 {
+    --num: 30;
+  }
+ 
+  .animate--20 {
+    --num: 20;
+  }
+ 
+  .animate--400 {
+    --num: 400;
+  }
+}

@@ -1,1 +1,54 @@
-
+@keyframes moveBg {
+  from { background-position: 0 center; }
+  to   { background-position: -1134px center; }
+}
+ 
+.carousel {
+  --blur: 6px;
+  --contrast: 115%;
+  --speed: 15s;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 250px;
+  width: 100%;
+  position: relative;
+ 
+  /* ✅ centreer carousel op pagina */
+  margin: auto;
+}
+ 
+.carousel .mask {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  backdrop-filter: blur(var(--blur)) contrast(var(--contrast));
+  -webkit-backdrop-filter: blur(var(--blur)) contrast(var(--contrast));
+  -webkit-mask: linear-gradient(
+    90deg,
+    #000 50px,
+    #0000 175px calc(100% - 175px),
+    #fff calc(100% - 50px)
+  );
+  pointer-events: none;
+}
+ 
+.carousel .logos {
+  position: absolute;
+  inset: 0;
+  animation: moveBg var(--speed) linear infinite;
+ 
+  /* ✅ kleiner + perfect gecentreerd */
+  background:
+    url(/web/image/111309-9bdc8d84/Odoo%20slider%20referenties%20%281%29.png?height=256)
+    center center / 1134px 150px repeat-x;
+ 
+  -webkit-mask: linear-gradient(
+    90deg,
+    #0000 5px,
+    #000 50px calc(100% - 50px),
+    #0000 calc(100% - 5px)
+  );
+}
